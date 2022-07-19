@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Application\Dto\Common;
 
-class FullName
+class FullNameDto
 {
     public string $surname;
     public string $name;
