@@ -9,9 +9,9 @@ use App\Api\Application\Dto\Common\Passport;
 
 class LeadIsLoadedDto
 {
-    public readonly int $id;
-    public readonly FullName $fullName;
-    public readonly \DateTimeImmutable $birthday;
-    public readonly string $phone;
-    public readonly Passport $passport;
+    public int $id;
+    public FullName $fullName;
+    public \DateTimeImmutable $birthday;
+    public string $phone;
+    public Passport $passport;
 }

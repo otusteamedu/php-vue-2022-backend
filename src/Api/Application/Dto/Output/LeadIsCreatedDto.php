@@ -6,5 +6,5 @@ namespace App\Api\Application\Dto\Output;
 
 class LeadIsCreatedDto
 {
-    public readonly int $id;
+    public int $id;
 }

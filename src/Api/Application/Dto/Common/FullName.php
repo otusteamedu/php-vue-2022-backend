@@ -6,6 +6,6 @@ namespace App\Api\Application\Dto\Common;
 
 class FullName
 {
-    public readonly string $surname;
-    public readonly string $name;
+    public string $surname;
+    public string $name;
 }
