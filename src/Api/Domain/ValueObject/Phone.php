@@ -17,24 +17,24 @@ class Phone
      * Пример: 9011234567
      * @ORM\Column(type="string", nullable=true, length=10)
      */
-    private string $number;
+    private string $value;
 
     /**
-     * @param  string  $number
+     * @param  string  $value
      * @throws InvalidArgumentException
      */
-    public function __construct(string $number)
+    public function __construct(string $value)
     {
-        $this->assertNumberIsValid($number);
-        $this->number = $number;
+        $this->assertNumberIsValid($value);
+        $this->value = $value;
     }
 
     /**
      * @return string
      */
-    public function getNumber(): string
+    public function getValue(): string
     {
-        return $this->number;
+        return $this->value;
     }
 
     /**
