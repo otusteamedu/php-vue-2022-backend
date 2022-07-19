@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Domain\ValueObject;
 
+use App\Api\Domain\Exception\InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,9 +34,13 @@ class Passport
      * @param  string  $serial
      * @param  string  $number
      * @param  \DateTimeImmutable  $date
+     * @throws InvalidArgumentException
      */
     public function __construct(string $serial, string $number, \DateTimeImmutable $date)
     {
+        $this->assertSerialIsValid($serial);
+        $this->assertNumberIsValid($number);
+        $this->assertDateIsInThePast($date);
         $this->serial = $serial;
         $this->number = $number;
         $this->date = $date;
@@ -63,5 +68,35 @@ class Passport
     public function getDate(): \DateTimeImmutable
     {
         return $this->date;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function assertSerialIsValid(string $serial): void
+    {
+        if (!preg_match('/\d{4}/', $serial)) {
+            throw new InvalidArgumentException('Серия паспорта должна содержать 4 цифры');
+        }
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function assertNumberIsValid(string $number): void
+    {
+        if (!preg_match('/\d{6}/', $number)) {
+            throw new InvalidArgumentException('Номер паспорта должен содержать 6 цифр');
+        }
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function assertDateIsInThePast(\DateTimeImmutable $date): void
+    {
+        if ($date >= new \DateTimeImmutable()) {
+            throw new InvalidArgumentException('Дата рождения должна быть в прошлом');
+        }
     }
 }

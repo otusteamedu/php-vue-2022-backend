@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Domain\ValueObject;
 
+use App\Api\Domain\Exception\InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,9 +34,12 @@ class FullName
      * @param  string  $surname
      * @param  string  $name
      * @param  string|null  $patronymic
+     * @throws InvalidArgumentException
      */
     public function __construct(string $surname, string $name, ?string $patronymic)
     {
+        $this->assertSurnameIsNotEmpty($surname);
+        $this->assertNameIsNotEmpty($name);
         $this->surname = $surname;
         $this->name = $name;
         $this->patronymic = $patronymic;
@@ -95,5 +99,25 @@ class FullName
             $shortName .= mb_substr($this->getPatronymic(), 0, 1).'.';
         }
         return $shortName;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function assertSurnameIsNotEmpty(string $surname): void
+    {
+        if ($surname === '') {
+            throw new InvalidArgumentException('Фамилия не должна быть пустой');
+        }
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    private function assertNameIsNotEmpty(string $name): void
+    {
+        if ($name === '') {
+            throw new InvalidArgumentException('Имя не должно быть пустым');
+        }
     }
 }
