@@ -18,6 +18,7 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Api/Domain/Entity/'
+            - '../src/Api/Domain/ValueObject/'
             - '../src/Api/Application/Dto/'
             - '../src/Kernel.php'
 
