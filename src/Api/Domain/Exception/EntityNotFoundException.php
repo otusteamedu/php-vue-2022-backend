@@ -6,7 +6,7 @@ namespace App\Api\Domain\Exception;
 
 use Throwable;
 
-class InvalidArgumentException extends \Exception
+class EntityNotFoundException extends \Exception
 {
     /**
      * @param  string  $message
