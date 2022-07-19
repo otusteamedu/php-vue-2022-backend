@@ -6,7 +6,7 @@ namespace App\Api\Application\Dto\Common;
 
 class PassportDto
 {
-    public string $serial;
-    public string $number;
-    public \DateTimeImmutable $date;
+    public ?string $serial = null;
+    public ?string $number = null;
+    public ?\DateTimeImmutable $date = null;
 }

@@ -44,6 +44,13 @@ class CreateLead implements CreateLeadInterface
      */
     private function mapDtoToLead(CreateLeadDto $dto): Lead
     {
+        if (empty($dto->fullName)) {
+            throw new InvalidArgumentException('В запросе отсутствует ФИО');
+        }
+        if (empty($dto->passport)) {
+            throw new InvalidArgumentException('В запросе отсутствует паспорт');
+        }
+
         $fullName = new FullName(
             $dto->fullName->surname,
             $dto->fullName->name,

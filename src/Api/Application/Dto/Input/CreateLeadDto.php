@@ -9,8 +9,8 @@ use App\Api\Application\Dto\Common\PassportDto;
 
 class CreateLeadDto
 {
-    public FullNameDto $fullName;
-    public \DateTimeImmutable $birthday;
-    public string $phone;
-    public PassportDto $passport;
+    public ?FullNameDto $fullName = null;
+    public ?\DateTimeImmutable $birthday = null;
+    public ?string $phone = null;
+    public ?PassportDto $passport = null;
 }

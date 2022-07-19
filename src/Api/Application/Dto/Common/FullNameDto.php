@@ -6,6 +6,6 @@ namespace App\Api\Application\Dto\Common;
 
 class FullNameDto
 {
-    public string $surname;
-    public string $name;
+    public ?string $surname = null;
+    public ?string $name = null;
 }
