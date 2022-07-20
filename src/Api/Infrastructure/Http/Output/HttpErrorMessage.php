@@ -6,5 +6,6 @@ namespace App\Api\Infrastructure\Http\Output;
 
 class HttpErrorMessage
 {
-    public string $errorMessage;
+    public int $code;
+    public string $message;
 }

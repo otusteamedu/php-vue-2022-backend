@@ -38,11 +38,13 @@ class CreateLeadController extends AbstractFOSRestController
             $view = $this->view($response, 201);
         } catch (InvalidArgumentException $e) {
             $errorMessage = new HttpErrorMessage();
-            $errorMessage->errorMessage = $e->getMessage();
+            $errorMessage->code = 400;
+            $errorMessage->message = $e->getMessage();
             $view = $this->view($errorMessage, 400);
         } catch (\Throwable $e) {
             $errorMessage = new HttpErrorMessage();
-            $errorMessage->errorMessage = $e->getMessage();
+            $errorMessage->code = 500;
+            $errorMessage->message = $e->getMessage();
             $view = $this->view($errorMessage, 500);
         }
         return $this->handleView($view);

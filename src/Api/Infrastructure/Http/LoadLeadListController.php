@@ -35,7 +35,8 @@ class LoadLeadListController extends AbstractFOSRestController
             $view = $this->view($response, 200);
         } catch (\Throwable $e) {
             $errorMessage = new HttpErrorMessage();
-            $errorMessage->errorMessage = $e->getMessage();
+            $errorMessage->code = 500;
+            $errorMessage->message = $e->getMessage();
             $view = $this->view($errorMessage, 500);
         }
         return $this->handleView($view);

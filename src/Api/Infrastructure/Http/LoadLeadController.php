@@ -35,11 +35,13 @@ class LoadLeadController extends AbstractFOSRestController
             $view = $this->view($response, 200);
         } catch (EntityNotFoundException $e) {
             $errorMessage = new HttpErrorMessage();
-            $errorMessage->errorMessage = $e->getMessage();
+            $errorMessage->code = 404;
+            $errorMessage->message = $e->getMessage();
             $view = $this->view($errorMessage, 404);
         } catch (\Throwable $e) {
             $errorMessage = new HttpErrorMessage();
-            $errorMessage->errorMessage = $e->getMessage();
+            $errorMessage->code = 500;
+            $errorMessage->message = $e->getMessage();
             $view = $this->view($errorMessage, 500);
         }
         return $this->handleView($view);
