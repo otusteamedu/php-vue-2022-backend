@@ -8,7 +8,7 @@ security:
         users_in_memory:
             memory:
                 users:
-                    otus: { password: '$2y$13$G6UvNZjDhDU95og5yd2JeOF5/i5.BxUKaRpnVTRXAtFpyBTT4adf6', roles: [ 'ROLE_ADMIN' ] }
+                    otus: { password: '$2y$13$y0jLmzDhnC/yaqIcqgVMJeKlOaHyFLCCppcYwy.zUkf2VnECtBFme', roles: [ 'ROLE_ADMIN' ] }
     firewalls:
         login:
             pattern: ^/api/v1/login
