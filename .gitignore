@@ -17,7 +17,6 @@
 
 # Other files
 .DS_Store
-/public/.htaccess
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
