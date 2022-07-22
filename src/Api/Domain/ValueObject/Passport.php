@@ -75,7 +75,7 @@ class Passport
      */
     private function assertSerialIsValid(string $serial): void
     {
-        if (!preg_match('/\d{4}/', $serial)) {
+        if (!preg_match('/^\d{4}$/', $serial)) {
             throw new InvalidArgumentException('Серия паспорта должна содержать 4 цифры');
         }
     }
@@ -85,7 +85,7 @@ class Passport
      */
     private function assertNumberIsValid(string $number): void
     {
-        if (!preg_match('/\d{6}/', $number)) {
+        if (!preg_match('/^\d{6}$/', $number)) {
             throw new InvalidArgumentException('Номер паспорта должен содержать 6 цифр');
         }
     }

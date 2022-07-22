@@ -42,7 +42,7 @@ class Phone
      */
     private function assertNumberIsValid(string $number): void
     {
-        if (!preg_match('/\d{10}/', $number)) {
+        if (!preg_match('/^\d{10}$/', $number)) {
             throw new InvalidArgumentException('Номер телефона должен содержать 10 цифр');
         }
     }
